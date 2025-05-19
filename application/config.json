@@ -1,0 +1,14 @@
+{
+  "flow_api_base": "aws:ssm:false:flow-api-base",
+  "flow_api_key": "aws:secret:true:flow-api-key",
+  "jira_api_base": "aws:ssm:false:jira-api-base",
+  "jira_api_key": "aws:secret:true:jira-api-key",
+  "flow_group": "aws:ssm:false:flow-group",
+  "db_connection": {
+    "dbname": "aws:ssm:false:metrics-database-name",
+    "user": "aws:ssm:false:metrics-database-user",
+    "password": "aws:secret:false:rds!db-2d1edc42-24d1-4baa-864d-9d538971756c",
+    "host": "aws:ssm:false:metrics-database-host",
+    "port": "aws:ssm:false:metrics-database-port"
+  }
+}
