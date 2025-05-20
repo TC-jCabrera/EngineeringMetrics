@@ -1,7 +1,7 @@
 from common.metrics_util import load_config
 from API.Flow_data import get_FlowTeams, get_JiraAliases
 from API.Jira_data import get_JiraTickets
-from repository.rds_repository import storeTeamMembers, updateJiraAliases
+from repository.rds_repository import storeTeamMembers, updateJiraAliases, storeJiraIssues
 import logging
 import os
 
@@ -23,9 +23,11 @@ def lambda_handler(event, context):
 
     for email in email_list:
         jiraAlias = get_JiraAliases(config, email)
+   
         returnExternalId = updateJiraAliases(config,jiraAlias)
-        jiraTickets = get_JiraTickets(config,returnExternalId,"2025-04-01","2025-04-30")
-        print(jiraTickets)
+        if returnExternalId:
+            jiraTickets = get_JiraTickets(config,returnExternalId,"2025-04-01","2025-04-30")
+            storeJiraIssues(config,jiraTickets)
 
     logging.info("Jira Aliases fetched successfully")
 

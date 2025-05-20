@@ -1,0 +1,606 @@
+{
+  "expand": "schema,names",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 15,
+  "issues": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "181680",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/181680",
+      "key": "MS-91",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/3",
+          "id": "3",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10818?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10818,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3050,
+            "name": "MPE Sprint 7 - Goat 🐐",
+            "state": "closed",
+            "boardId": 139,
+            "goal": "",
+            "startDate": "2025-04-02T18:30:00.000Z",
+            "endDate": "2025-04-15T07:00:00.000Z",
+            "completeDate": "2025-04-16T04:05:37.908Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-09T17:10:18.165-0700",
+        "customfield_10004": 5
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "187736",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/187736",
+      "key": "COM-528",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10613",
+          "id": "10613",
+          "description": "Issue found during testing.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10804?size=medium",
+          "name": "Defect",
+          "subtask": false,
+          "avatarId": 10804,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-29T11:52:44.300-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "187495",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/187495",
+      "key": "COM-525",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10613",
+          "id": "10613",
+          "description": "Issue found during testing.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10804?size=medium",
+          "name": "Defect",
+          "subtask": false,
+          "avatarId": 10804,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-29T06:53:35.499-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "187401",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/187401",
+      "key": "COM-523",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10613",
+          "id": "10613",
+          "description": "Issue found during testing.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10804?size=medium",
+          "name": "Defect",
+          "subtask": false,
+          "avatarId": 10804,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-23T16:59:40.767-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "186886",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/186886",
+      "key": "COM-516",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3331,
+            "name": "CCF Sprint 59",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-29T20:39:40.419Z",
+            "endDate": "2025-05-13T20:30:00.000Z",
+            "completeDate": "2025-05-15T20:34:16.871Z"
+          },
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-29T15:19:19.325-0700",
+        "customfield_10004": 2
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "186885",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/186885",
+      "key": "COM-515",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-25T03:26:43.143-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "181877",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/181877",
+      "key": "COM-505",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3147,
+            "name": "CCF Sprint 57",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-01T20:34:07.619Z",
+            "endDate": "2025-04-15T20:30:00.000Z",
+            "completeDate": "2025-04-15T20:03:32.840Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-01T16:33:27.232-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "181851",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/181851",
+      "key": "COM-503",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/1",
+          "id": "1",
+          "description": "A problem which impairs or prevents the functions of the product.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10803?size=medium",
+          "name": "Bug",
+          "subtask": false,
+          "avatarId": 10803,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-25T10:04:39.827-0700",
+        "customfield_10004": 2
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "128907",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/128907",
+      "key": "COM-315",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3147,
+            "name": "CCF Sprint 57",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-01T20:34:07.619Z",
+            "endDate": "2025-04-15T20:30:00.000Z",
+            "completeDate": "2025-04-15T20:03:32.840Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [
+          {
+            "id": "182650",
+            "key": "COM-510",
+            "self": "https://tigertext.atlassian.net/rest/api/2/issue/182650",
+            "fields": {
+              "summary": "[QA] Validate PBX remains functional after changes",
+              "status": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/status/6",
+                "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+                "iconUrl": "https://tigertext.atlassian.net/images/icons/statuses/closed.png",
+                "name": "Closed",
+                "id": "6",
+                "statusCategory": {
+                  "self": "https://tigertext.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/priority/10003",
+                "iconUrl": "https://tigertext.atlassian.net/images/icons/priorities/trivial.svg",
+                "name": "Unassigned Priority",
+                "id": "10003"
+              },
+              "issuetype": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/5",
+                "id": "5",
+                "description": "The sub-task of the issue",
+                "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10816?size=medium",
+                "name": "Sub-task",
+                "subtask": true,
+                "avatarId": 10816,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        ],
+        "resolutiondate": "2025-04-08T18:19:49.903-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "187024",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/187024",
+      "key": "CCL-278",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-22T10:00:24.730-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "186910",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/186910",
+      "key": "CCL-255",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10001",
+          "id": "10001",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10815?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10815,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-17T01:03:27.333-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "182564",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/182564",
+      "key": "CCL-217",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/1",
+          "id": "1",
+          "description": "A problem which impairs or prevents the functions of the product.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10803?size=medium",
+          "name": "Bug",
+          "subtask": false,
+          "avatarId": 10803,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3147,
+            "name": "CCF Sprint 57",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-01T20:34:07.619Z",
+            "endDate": "2025-04-15T20:30:00.000Z",
+            "completeDate": "2025-04-15T20:03:32.840Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [
+          {
+            "id": "182639",
+            "key": "CCL-219",
+            "self": "https://tigertext.atlassian.net/rest/api/2/issue/182639",
+            "fields": {
+              "summary": "[QA] Validate force upgrade app version",
+              "status": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/status/6",
+                "description": "The issue is considered finished, the resolution is correct. Issues which are closed can be reopened.",
+                "iconUrl": "https://tigertext.atlassian.net/images/icons/statuses/closed.png",
+                "name": "Closed",
+                "id": "6",
+                "statusCategory": {
+                  "self": "https://tigertext.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/priority/10003",
+                "iconUrl": "https://tigertext.atlassian.net/images/icons/priorities/trivial.svg",
+                "name": "Unassigned Priority",
+                "id": "10003"
+              },
+              "issuetype": {
+                "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/5",
+                "id": "5",
+                "description": "The sub-task of the issue",
+                "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10816?size=medium",
+                "name": "Sub-task",
+                "subtask": true,
+                "avatarId": 10816,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        ],
+        "resolutiondate": "2025-04-08T18:23:59.945-0700",
+        "customfield_10004": 1
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "182366",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/182366",
+      "key": "CCL-210",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/10612",
+          "id": "10612",
+          "description": "Spikes may be used for a number of reasons:The team may not have knowledge of a new domain, and spikes may be used for basic research to familiarize the team with a new technology or domain.The story may be too big to be estimated appropriately, and the team may use a spike to analyze the implied behavior, so they can split the story into estimable pieces.The story may contain significant technical risk, and the team may have to do some research or prototyping to gain confidence in a technological approach that will allow them to commit the user story to some future timebox.The story may contain significant functional risk, in that while the intent of the story may be understood, it’s not clear how the system needs to interact with the user to achieve the benefit implied.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/16632?size=medium",
+          "name": "Spike",
+          "subtask": false,
+          "avatarId": 16632,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3287,
+            "name": "CCF Sprint 58",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-15T20:16:55.753Z",
+            "endDate": "2025-04-29T20:30:00.000Z",
+            "completeDate": "2025-04-29T20:01:56.109Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-22T09:58:41.170-0700",
+        "customfield_10004": 3
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "181984",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/181984",
+      "key": "CCL-202",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/1",
+          "id": "1",
+          "description": "A problem which impairs or prevents the functions of the product.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10803?size=medium",
+          "name": "Bug",
+          "subtask": false,
+          "avatarId": 10803,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3147,
+            "name": "CCF Sprint 57",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-01T20:34:07.619Z",
+            "endDate": "2025-04-15T20:30:00.000Z",
+            "completeDate": "2025-04-15T20:03:32.840Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-01T14:04:06.575-0700",
+        "customfield_10004": 2
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "181945",
+      "self": "https://tigertext.atlassian.net/rest/api/latest/issue/181945",
+      "key": "CCL-199",
+      "fields": {
+        "issuetype": {
+          "self": "https://tigertext.atlassian.net/rest/api/2/issuetype/1",
+          "id": "1",
+          "description": "A problem which impairs or prevents the functions of the product.",
+          "iconUrl": "https://tigertext.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10803?size=medium",
+          "name": "Bug",
+          "subtask": false,
+          "avatarId": 10803,
+          "hierarchyLevel": 0
+        },
+        "customfield_10007": [
+          {
+            "id": 3147,
+            "name": "CCF Sprint 57",
+            "state": "closed",
+            "boardId": 212,
+            "goal": "",
+            "startDate": "2025-04-01T20:34:07.619Z",
+            "endDate": "2025-04-15T20:30:00.000Z",
+            "completeDate": "2025-04-15T20:03:32.840Z"
+          }
+        ],
+        "customfield_12858": null,
+        "subtasks": [],
+        "resolutiondate": "2025-04-08T13:29:12.598-0700",
+        "customfield_10004": 3
+      }
+    }
+  ]
+}

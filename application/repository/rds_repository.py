@@ -1,5 +1,6 @@
 import logging
 import psycopg2
+from common.metrics_util import parse_datetime
 
 
 def storeTeamMembers(config, data):
@@ -119,7 +120,7 @@ def updateJiraAliases(config, data):
         for user in data['results']:
             email = user.get('email')
             external_id = user.get('external_id')
-            print(email,external_id)
+           
             if email and external_id:
                 # Update the external_id where email matches
                 cursor.execute(
@@ -137,6 +138,113 @@ def updateJiraAliases(config, data):
         conn.commit()
         logging.info("Successfully updated Jira Aliases")
         return returnExternalId
+    except Exception as e:
+        logging.error(f"Error persisting data: {str(e)}")
+        if conn:
+            conn.rollback()
+        raise
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+def storeJiraIssues(config, data): 
+    try:
+        """Insert Jira issues into the database."""
+        # Connect to PostgreSQL
+        conn = psycopg2.connect(
+            dbname=config["db_connection"]["dbname"],
+            user=config["db_connection"]["user"],
+            password=config["db_connection"]["password"],
+            host=config["db_connection"]["host"],
+            port=config["db_connection"]["port"],
+        )
+        cursor = conn.cursor()
+        
+        # Access the issues array from the response
+        for issue in data['issues']:
+            fields = issue['fields']
+            
+            # Get story points, default to 0 if empty
+            story_points = fields.get('customfield_10004', 0)
+            
+            # Insert into jira_issues table
+            cursor.execute("""
+                INSERT INTO jira_issues (
+                    id, key, summary, resolution_date, story_points, 
+                    issue_type, assignee_id
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (id) DO UPDATE SET
+                    key = EXCLUDED.key,
+                    summary = EXCLUDED.summary,
+                    resolution_date = EXCLUDED.resolution_date,
+                    story_points = EXCLUDED.story_points,
+                    issue_type = EXCLUDED.issue_type,
+                    assignee_id = EXCLUDED.assignee_id
+            """, (
+                int(issue['id']),
+                issue['key'],
+                fields.get('summary'),
+                parse_datetime(fields.get('resolutiondate')),
+                story_points,
+                fields['issuetype']['name'],
+                fields.get('assignee', {}).get('accountId')
+            ))
+            
+            # Handle sprints
+            if 'customfield_10007' in fields and fields['customfield_10007']:
+                for sprint in fields['customfield_10007']:
+                    # Insert into sprints table
+                    cursor.execute("""
+                        INSERT INTO sprints (
+                            id, name, state, board_id, start_date, 
+                            end_date, complete_date
+                        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                        ON CONFLICT (id) DO UPDATE SET
+                            name = EXCLUDED.name,
+                            state = EXCLUDED.state,
+                            board_id = EXCLUDED.board_id,
+                            start_date = EXCLUDED.start_date,
+                            end_date = EXCLUDED.end_date,
+                            complete_date = EXCLUDED.complete_date
+                    """, (
+                        sprint['id'],
+                        sprint['name'],
+                        sprint['state'],
+                        sprint['boardId'],
+                        parse_datetime(sprint.get('startDate')),
+                        parse_datetime(sprint.get('endDate')),
+                        parse_datetime(sprint.get('completeDate'))
+                    ))
+                    
+                    # Insert into issue_sprints table
+                    cursor.execute("""
+                        INSERT INTO issue_sprints (
+                            issue_id, sprint_id
+                        ) VALUES (%s, %s)
+                        ON CONFLICT (issue_id, sprint_id) DO NOTHING
+                    """, (int(issue['id']), sprint['id']))
+            
+            # Handle subtasks
+            if 'subtasks' in fields and fields['subtasks']:
+                for subtask in fields['subtasks']:
+                    cursor.execute("""
+                        INSERT INTO subtasks (
+                            id, parent_issue_id, key
+                        ) VALUES (%s, %s, %s)
+                        ON CONFLICT (id) DO UPDATE SET
+                            parent_issue_id = EXCLUDED.parent_issue_id,
+                            key = EXCLUDED.key
+                    """, (
+                        int(subtask['id']),
+                        int(issue['id']),
+                        subtask['key']
+                    ))
+        
+        conn.commit()
+        logging.info("Successfully stored Jira Issues")
     except Exception as e:
         logging.error(f"Error persisting data: {str(e)}")
         if conn:

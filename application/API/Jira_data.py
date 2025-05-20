@@ -23,10 +23,10 @@ def get_JiraTickets(config,jiraAlias,startDate,endDate):
               startDate,
              " AND resolved<=",
               endDate,
-             "&validateQuery=true&fields=subtasks,customfield_10004,customfield_10007,customfield_12858,resolutiondate,issuetype") #Issue Type
+             "&validateQuery=true&fields=subtasks,customfield_10004,customfield_10007,customfield_12858,summary,resolutiondate,issuetype,assignee") #Issue Type
 
     url = url.replace(" ", "%20")
-    print(headers)
+    print(url)
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:

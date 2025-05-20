@@ -41,3 +41,7 @@ CREATE TABLE subtasks (
 CREATE INDEX idx_jira_issues_key ON jira_issues(key);
 CREATE INDEX idx_jira_issues_resolution_date ON jira_issues(resolution_date);
 CREATE INDEX idx_issue_sprints_sprint_id ON issue_sprints(sprint_id);
+
+-- Drop columns if they exist
+ALTER TABLE jira_issues DROP COLUMN IF EXISTS parent_key;
+ALTER TABLE jira_issues DROP COLUMN IF EXISTS parent_story_points;
