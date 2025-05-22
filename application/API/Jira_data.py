@@ -14,7 +14,7 @@ def get_JiraTickets(config,jiraAlias,startDate,endDate):
                     "Authorization": f"Basic {token}",
                     "Content-Type": "application/json",
                 }
-
+    # Look for tickets that are assigned to the user and resolved between the start and end date
     url ="{}{}{}{}{}{}{}{}".format(
              jira_api_core,
              "/search?jql=assignee=",
@@ -26,7 +26,7 @@ def get_JiraTickets(config,jiraAlias,startDate,endDate):
              "&validateQuery=true&fields=subtasks,customfield_10004,customfield_10007,customfield_12858,summary,resolutiondate,issuetype,assignee") #Issue Type
 
     url = url.replace(" ", "%20")
-    print(url)
+   
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:

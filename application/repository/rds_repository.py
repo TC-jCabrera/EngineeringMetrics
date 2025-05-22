@@ -1,6 +1,6 @@
 import logging
-import psycopg2
 from common.metrics_util import parse_datetime
+from .db_connection import DatabaseConnection
 
 
 def storeTeamMembers(config, data):
@@ -12,16 +12,9 @@ def storeTeamMembers(config, data):
         db_config: Database connection configuration dictionary
     """
     email_list = []
+    cursor = None
     try:
-       
-        # Connect to PostgreSQL
-        conn = psycopg2.connect(
-            dbname=config["db_connection"]["dbname"],
-            user=config["db_connection"]["user"],
-            password=config["db_connection"]["password"],
-            host=config["db_connection"]["host"],
-            port=config["db_connection"]["port"],
-        )
+        conn = DatabaseConnection.get_instance().get_connection(config)
         cursor = conn.cursor()
         
         logging.info(f"Processing {len(data['results'])} team members")
@@ -94,29 +87,18 @@ def storeTeamMembers(config, data):
     finally:
         if cursor:
             cursor.close()
-        if conn:
-            conn.close()
 
 
 
 def updateJiraAliases(config, data):    
+    cursor = None
     try:
-        
-        # Connect to PostgreSQL
-        conn = psycopg2.connect(
-            dbname=config["db_connection"]["dbname"],
-            user=config["db_connection"]["user"],
-            password=config["db_connection"]["password"],
-            host=config["db_connection"]["host"],
-            port=config["db_connection"]["port"],
-        )
+        conn = DatabaseConnection.get_instance().get_connection(config)
         cursor = conn.cursor()
         returnExternalId = ""
         logging.info(f"Processing {len(data['results'])} team members")
         
         """Update external_ids in the database based on email matches."""
-        cursor = conn.cursor()
-        
         for user in data['results']:
             email = user.get('email')
             external_id = user.get('external_id')
@@ -146,21 +128,12 @@ def updateJiraAliases(config, data):
     finally:
         if cursor:
             cursor.close()
-        if conn:
-            conn.close()
 
 
 def storeJiraIssues(config, data): 
+    cursor = None
     try:
-        """Insert Jira issues into the database."""
-        # Connect to PostgreSQL
-        conn = psycopg2.connect(
-            dbname=config["db_connection"]["dbname"],
-            user=config["db_connection"]["user"],
-            password=config["db_connection"]["password"],
-            host=config["db_connection"]["host"],
-            port=config["db_connection"]["port"],
-        )
+        conn = DatabaseConnection.get_instance().get_connection(config)
         cursor = conn.cursor()
         
         # Access the issues array from the response
@@ -259,8 +232,6 @@ def storeJiraIssues(config, data):
     finally:
         if cursor:
             cursor.close()
-        if conn:
-            conn.close()
 
 
 def updateSubtasksStoryPoints(config, start_date, end_date):
@@ -268,15 +239,9 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
     Updates story points for subtasks that have 0 points by distributing parent's story points.
     Only updates subtasks within the specified date range.
     """
+    cursor = None
     try:
-        # Connect to PostgreSQL
-        conn = psycopg2.connect(
-            dbname=config["db_connection"]["dbname"],
-            user=config["db_connection"]["user"],
-            password=config["db_connection"]["password"],
-            host=config["db_connection"]["host"],
-            port=config["db_connection"]["port"],
-        )
+        conn = DatabaseConnection.get_instance().get_connection(config)
         cursor = conn.cursor()
         
         # Update subtasks with 0 story points within date range
@@ -308,6 +273,8 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
         updated_count = cursor.rowcount
         conn.commit()
         logging.info(f"Updated story points for {updated_count} subtasks between {start_date} and {end_date}")
+
+        #TODO: If the issue has subtasks, update the story points to zero
         
     except Exception as e:
         logging.error(f"Error updating subtask story points: {str(e)}")
@@ -317,5 +284,3 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
     finally:
         if cursor:
             cursor.close()
-        if conn:
-            conn.close()

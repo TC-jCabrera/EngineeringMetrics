@@ -17,7 +17,7 @@ def get_FlowTeams(config):
         "Content-Type": "application/json",
         "Authorization": f"Bearer {flow_token}"
     }
-
+    # Get the team members for the group
     url ="{}{}{}{}".format(
             flow_api_core,
             "/team_membership/?membership_type=contributor&team__name=",
@@ -25,7 +25,6 @@ def get_FlowTeams(config):
             "&limit=100&offset=0",
         )
 
-  
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
@@ -48,6 +47,7 @@ def get_JiraAliases(config, email):
         "Authorization": f"Bearer {flow_token}"
     }
 
+    # Get the Jira alias for the user
     url ="{}{}".format(
             flow_api_core,
             "/user_alias/?integration=9398&email={}".format(email))

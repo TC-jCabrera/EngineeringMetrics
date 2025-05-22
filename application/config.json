@@ -4,6 +4,8 @@
   "jira_api_base": "aws:ssm:false:jira-api-base",
   "jira_api_key": "aws:secret:true:jira-api-key",
   "flow_group": "aws:ssm:false:flow-group",
+  "start_date": "aws:ssm:false:metrics-start-date",
+  "end_date": "aws:ssm:false:metrics-end-date",
   "db_connection": {
     "dbname": "aws:ssm:false:metrics-database-name",
     "user": "aws:ssm:false:metrics-database-user",

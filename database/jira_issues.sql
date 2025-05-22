@@ -7,6 +7,7 @@ CREATE TABLE jira_issues (
     story_points NUMERIC, -- customfield_10004
     issue_type VARCHAR(100) NOT NULL,
     assignee_id VARCHAR(100) NOT NULL,
+    email VARCHAR(255),
     subtask_count INTEGER DEFAULT 0
 );
 
