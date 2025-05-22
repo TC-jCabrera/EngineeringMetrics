@@ -168,21 +168,25 @@ def storeJiraIssues(config, data):
             fields = issue['fields']
             
             # Get story points, default to 0 if empty
-            story_points = fields.get('customfield_10004', 0)
+            story_points = 0 if fields.get('customfield_10004') is None else fields['customfield_10004']
+            
+          
             
             # Insert into jira_issues table
             cursor.execute("""
                 INSERT INTO jira_issues (
                     id, key, summary, resolution_date, story_points, 
-                    issue_type, assignee_id
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s)
-                ON CONFLICT (id) DO UPDATE SET
+                    issue_type, assignee_id, email, subtask_count
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (id) DO UPDATE SET  
                     key = EXCLUDED.key,
                     summary = EXCLUDED.summary,
                     resolution_date = EXCLUDED.resolution_date,
                     story_points = EXCLUDED.story_points,
                     issue_type = EXCLUDED.issue_type,
-                    assignee_id = EXCLUDED.assignee_id
+                    assignee_id = EXCLUDED.assignee_id,
+                    email = EXCLUDED.email,
+                    subtask_count = EXCLUDED.subtask_count
             """, (
                 int(issue['id']),
                 issue['key'],
@@ -190,7 +194,9 @@ def storeJiraIssues(config, data):
                 parse_datetime(fields.get('resolutiondate')),
                 story_points,
                 fields['issuetype']['name'],
-                fields.get('assignee', {}).get('accountId')
+                fields.get('assignee', {}).get('accountId'),
+                fields.get('assignee', {}).get('emailAddress'),
+                len(fields.get('subtasks', []))
             ))
             
             # Handle sprints
@@ -247,6 +253,64 @@ def storeJiraIssues(config, data):
         logging.info("Successfully stored Jira Issues")
     except Exception as e:
         logging.error(f"Error persisting data: {str(e)}")
+        if conn:
+            conn.rollback()
+        raise
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+def updateSubtasksStoryPoints(config, start_date, end_date):
+    """
+    Updates story points for subtasks that have 0 points by distributing parent's story points.
+    Only updates subtasks within the specified date range.
+    """
+    try:
+        # Connect to PostgreSQL
+        conn = psycopg2.connect(
+            dbname=config["db_connection"]["dbname"],
+            user=config["db_connection"]["user"],
+            password=config["db_connection"]["password"],
+            host=config["db_connection"]["host"],
+            port=config["db_connection"]["port"],
+        )
+        cursor = conn.cursor()
+        
+        # Update subtasks with 0 story points within date range
+        cursor.execute("""
+            WITH parent_info AS (
+                SELECT 
+                    j.id as parent_id,
+                    j.key as parent_key,
+                    j.story_points as parent_story_points,
+                    j.subtask_count
+                FROM jira_issues j
+                WHERE j.subtask_count > 0
+                AND j.resolution_date BETWEEN %s AND %s
+            )
+            UPDATE jira_issues j
+            SET story_points = CASE 
+                WHEN p.parent_story_points > 0 AND p.subtask_count > 0 
+                THEN ROUND(CAST(p.parent_story_points AS NUMERIC) / p.subtask_count, 2)
+                ELSE 0 
+            END
+            FROM parent_info p
+            JOIN subtasks s ON s.parent_issue_id = p.parent_id
+            WHERE j.id = s.id
+            AND j.issue_type = 'Sub-task'
+            AND j.story_points = 0
+            AND j.resolution_date BETWEEN %s AND %s
+        """, (start_date, end_date, start_date, end_date))
+        
+        updated_count = cursor.rowcount
+        conn.commit()
+        logging.info(f"Updated story points for {updated_count} subtasks between {start_date} and {end_date}")
+        
+    except Exception as e:
+        logging.error(f"Error updating subtask story points: {str(e)}")
         if conn:
             conn.rollback()
         raise

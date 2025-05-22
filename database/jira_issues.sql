@@ -6,7 +6,8 @@ CREATE TABLE jira_issues (
     resolution_date TIMESTAMP,
     story_points NUMERIC, -- customfield_10004
     issue_type VARCHAR(100) NOT NULL,
-    assignee_id VARCHAR(100) NOT NULL
+    assignee_id VARCHAR(100) NOT NULL,
+    subtask_count INTEGER DEFAULT 0
 );
 
 -- Sprint table - Basic sprint information
@@ -45,3 +46,9 @@ CREATE INDEX idx_issue_sprints_sprint_id ON issue_sprints(sprint_id);
 -- Drop columns if they exist
 ALTER TABLE jira_issues DROP COLUMN IF EXISTS parent_key;
 ALTER TABLE jira_issues DROP COLUMN IF EXISTS parent_story_points;
+
+-- Add email field to jira_issues table
+ALTER TABLE jira_issues ADD COLUMN email VARCHAR(255);
+
+-- Add subtask_count column
+ALTER TABLE jira_issues ADD COLUMN IF NOT EXISTS subtask_count INTEGER DEFAULT 0;
