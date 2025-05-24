@@ -6,6 +6,7 @@ from repository.db_connection import DatabaseConnection
 import logging
 import os
 import sys
+from datetime import datetime, timedelta
 
 # Configure logging
 logging.basicConfig(
@@ -15,6 +16,10 @@ logging.basicConfig(
 
 def process_jira_data(start_date: str, end_date: str):
     config = load_config()
+    
+    # Add one day to end date
+    end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
+    end_date_plus_one = (end_date_obj + timedelta(days=1)).strftime('%Y-%m-%d')
 
     try:
         # Get Flow Team members
@@ -27,12 +32,12 @@ def process_jira_data(start_date: str, end_date: str):
        
             returnExternalId = updateJiraAliases(config,jiraAlias)
             if returnExternalId:
-                jiraTickets = get_JiraTickets(config,returnExternalId,start_date,end_date)
+                jiraTickets = get_JiraTickets(config,returnExternalId,start_date,end_date_plus_one)
                 storeJiraIssues(config,jiraTickets)
 
         updateSubtasksStoryPoints(config, start_date, end_date)
 
-        logging.info("Jira Aliases fetched successfully")
+        logging.info("Jira data processed successfully")
     finally:
         # Close database connection
         DatabaseConnection.get_instance().close_connection()

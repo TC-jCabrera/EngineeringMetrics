@@ -21,7 +21,7 @@ def get_JiraTickets(config,jiraAlias,startDate,endDate):
              jiraAlias,
              " AND resolved>=",
               startDate,
-             " AND resolved<=",
+             " AND resolved <",
               endDate,
              "&validateQuery=true&fields=subtasks,customfield_10004,customfield_10007,customfield_12858,summary,resolutiondate,issuetype,assignee") #Issue Type
 
