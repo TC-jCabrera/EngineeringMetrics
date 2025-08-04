@@ -76,18 +76,23 @@ The script will:
 EngineeringMetrics/
 ├── application/
 │   ├── app.py                 # Main application entry point
+│   ├── config.json           # Application configuration
+│   ├── requirements.txt      # Application-specific dependencies
 │   ├── repository/
 │   │   ├── db_connection.py   # Database connection manager
 │   │   └── rds_repository.py  # Database operations
-│   └── API/
-│       ├── Flow_data.py       # Flow API integration
-│       └── Jira_data.py       # Jira API integration
+│   ├── API/
+│   │   ├── Flow_data.py       # Flow API integration
+│   │   └── Jira_data.py       # Jira API integration
+│   ├── cloud/                # Cloud infrastructure code
+│   └── common/
+│       └── metrics_util.py    # Utility functions
 ├── database/
-│   └── jira_issues.sql        # Database schema
-├── common/
-│   └── metrics_util.py        # Utility functions
-├── requirements.txt           # Python dependencies
-└── README.md                 # This file
+│   ├── jira_issues.sql       # Jira issues schema
+│   ├── databaseScripts.sql   # Additional database scripts
+│   └── teams.sql            # Teams schema
+├── requirements.txt          # Project dependencies
+└── README.md                # This file
 ```
 
 ## Database Schema
@@ -98,6 +103,7 @@ EngineeringMetrics/
 - `sprints`: Sprint details
 - `issue_sprints`: Issue-sprint relationships
 - `subtasks`: Parent-child relationships
+- `teams`: Team information and configurations
 
 ### Key Features
 
@@ -105,6 +111,7 @@ EngineeringMetrics/
 - Sprint management
 - Team member associations
 - Subtask relationships
+- Team-level configurations and settings
 
 ## Contributing
 

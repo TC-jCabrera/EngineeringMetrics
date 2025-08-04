@@ -245,22 +245,23 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
         cursor = conn.cursor()
         
         # Update subtasks with 0 story points within date range
+        # First, update subtasks' story points based on their parent's story points
         cursor.execute("""
             WITH parent_info AS (
-                SELECT 
-                    j.id as parent_id,
-                    j.key as parent_key,
-                    j.story_points as parent_story_points,
-                    j.subtask_count
-                FROM jira_issues j
-                WHERE j.subtask_count > 0
-                AND j.resolution_date BETWEEN %s AND %s
+            SELECT 
+                j.id as parent_id,
+                j.key as parent_key,
+                j.story_points as parent_story_points,
+                j.subtask_count
+            FROM jira_issues j
+            WHERE j.subtask_count > 0
+            AND j.resolution_date BETWEEN %s AND %s
             )
             UPDATE jira_issues j
             SET story_points = CASE 
-                WHEN p.parent_story_points > 0 AND p.subtask_count > 0 
-                THEN ROUND(CAST(p.parent_story_points AS NUMERIC) / p.subtask_count, 2)
-                ELSE 0 
+            WHEN p.parent_story_points > 0 AND p.subtask_count > 0 
+            THEN ROUND(CAST(p.parent_story_points AS NUMERIC) / p.subtask_count, 2)
+            ELSE 0 
             END
             FROM parent_info p
             JOIN subtasks s ON s.parent_issue_id = p.parent_id
@@ -269,6 +270,14 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
             AND j.story_points = 0
             AND j.resolution_date BETWEEN %s AND %s
         """, (start_date, end_date, start_date, end_date))
+
+        # Then, set parent story_points to 0 for parents that had their points distributed
+        cursor.execute("""
+            UPDATE jira_issues
+            SET story_points = 0
+            WHERE subtask_count > 0
+            AND resolution_date BETWEEN %s AND %s
+        """, (start_date, end_date))
         
         updated_count = cursor.rowcount
         conn.commit()
