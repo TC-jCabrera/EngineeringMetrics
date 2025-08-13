@@ -271,13 +271,7 @@ def updateSubtasksStoryPoints(config, start_date, end_date):
             AND j.resolution_date BETWEEN %s AND %s
         """, (start_date, end_date, start_date, end_date))
 
-        # Then, set parent story_points to 0 for parents that had their points distributed
-        cursor.execute("""
-            UPDATE jira_issues
-            SET story_points = 0
-            WHERE subtask_count > 0
-            AND resolution_date BETWEEN %s AND %s
-        """, (start_date, end_date))
+        # (Removed code that sets story_points to 0 for issues with subtasks)
         
         updated_count = cursor.rowcount
         conn.commit()
