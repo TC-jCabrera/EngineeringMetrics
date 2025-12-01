@@ -17,7 +17,7 @@ def get_JiraTickets(config,jiraAlias,startDate,endDate):
     # Look for tickets that are assigned to the user and resolved between the start and end date
     url ="{}{}{}{}{}{}{}{}".format(
              jira_api_core,
-             "/search?jql=assignee=",
+             "/search/jql?jql=assignee=",
              jiraAlias,
              " AND resolved>=",
               startDate,
