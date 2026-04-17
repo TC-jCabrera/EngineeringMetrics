@@ -29,11 +29,11 @@ def process_jira_data(start_date: str, end_date: str):
 
         for email in email_list:
             jiraAlias = get_JiraAliases(config, email)
-       
-            returnExternalId = updateJiraAliases(config,jiraAlias)
+
+            returnExternalId = updateJiraAliases(config, jiraAlias)
             if returnExternalId:
-                jiraTickets = get_JiraTickets(config,returnExternalId,start_date,end_date_plus_one)
-                storeJiraIssues(config,jiraTickets)
+                jiraTickets = get_JiraTickets(config, returnExternalId, start_date, end_date_plus_one)
+                storeJiraIssues(config, jiraTickets)
 
         updateSubtasksStoryPoints(config, start_date, end_date)
 
