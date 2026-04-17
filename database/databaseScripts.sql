@@ -6,15 +6,15 @@ select * from users
 where external_id = '60778d4fb5dffc006f4653c9'
 
 select email, sum(story_points ) from jira_issues ji
-where resolution_date between '2025-10-01' and '2025-11-01'
+where resolution_date between '2026-02-01' and '2026-03-01'
 group by email 
 order by ji.email 
 
 
 select * 
 from jira_issues ji
-where resolution_date between '2025-07-01' and '2025-08-01'
-and email = 'maquino@tigerconnect.com'
+where resolution_date between '2026-01-01' and '2026-02-01'
+and email = 'jcomas@tigerconnect.com'
 
 where story_points = 0
 and issue_type = 'Sub-task'
